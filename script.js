@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cria um link temporário para download
         const link = document.createElement('a');
         link.href = 'app.exe'; // NOME CORRIGIDO PARA app.exe
-        link.download = 'Analise_Desempenho.exe'; // Nome que aparecerá no download
+        link.download = 'app.exe'; // Nome que aparecerá no download
         
         // Adiciona o link ao DOM, clica e remove
         document.body.appendChild(link);
