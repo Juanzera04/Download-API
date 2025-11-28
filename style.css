@@ -17,7 +17,7 @@ body {
 .container {
     text-align: center;
     padding: 2rem;
-    max-width: 500px;
+    max-width: 800px;
     width: 100%;
 }
 
@@ -98,6 +98,107 @@ body {
     transform: translateY(3px);
 }
 
+/* Botão de ajuda */
+.help-btn {
+    background: transparent;
+    border: 2px solid #2868e4;
+    color: #2868e4;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.help-btn:hover {
+    background: #2868e4;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Container do tutorial (inicialmente escondido) */
+.tutorial-container {
+    display: none;
+    margin-top: 2rem;
+    padding: 2rem;
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 15px;
+    border: 1px solid #334155;
+    text-align: left;
+}
+
+.tutorial-container.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.tutorial-title {
+    text-align: center;
+    color: #5ce1e6;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.tutorial-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.step {
+    background: rgba(15, 23, 42, 0.6);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #8c52ff;
+}
+
+.step h3 {
+    color: #5ce1e6;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.tutorial-img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    border: 2px solid #334155;
+    margin: 1rem 0;
+    display: block;
+}
+
+.step p {
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+/* Botão fechar tutorial */
+.close-tutorial-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.close-tutorial-btn:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
 /* Efeito de brilho no cabeçalho */
 .header h1 {
     position: relative;
@@ -129,6 +230,14 @@ body {
         padding: 1.2rem 2.5rem;
         font-size: 1.1rem;
     }
+
+    .tutorial-container {
+        padding: 1rem;
+    }
+
+    .step {
+        padding: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -141,5 +250,13 @@ body {
         font-size: 1rem;
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+    .tutorial-title {
+        font-size: 1.5rem;
+    }
+
+    .step h3 {
+        font-size: 1.1rem;
     }
 }

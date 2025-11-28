@@ -1,35 +1,62 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
     const downloadBtn = document.getElementById('downloadBtn');
+    const helpBtn = document.getElementById('helpBtn');
+    const tutorialContainer = document.getElementById('tutorialContainer');
+    const closeTutorialBtn = document.getElementById('closeTutorialBtn');
     
+    // Download do arquivo
     downloadBtn.addEventListener('click', function() {
-        // Cria um link temporário para download
         const link = document.createElement('a');
-        link.href = 'app.exe'; // NOME CORRIGIDO PARA app.exe
-        link.download = 'app.exe'; // Nome que aparecerá no download
+        link.href = 'app.exe';
+        link.download = 'Analise_Desempenho.exe';
         
-        // Adiciona o link ao DOM, clica e remove
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         
-        // Feedback visual para o usuário
         showDownloadFeedback();
     });
     
+    // Mostrar tutorial
+    helpBtn.addEventListener('click', function() {
+        tutorialContainer.classList.add('show');
+        // Rola suavemente até o tutorial
+        tutorialContainer.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+    
+    // Fechar tutorial
+    closeTutorialBtn.addEventListener('click', function() {
+        tutorialContainer.classList.remove('show');
+        // Rola de volta para o topo
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Fechar tutorial clicando fora (opcional)
+    document.addEventListener('click', function(event) {
+        if (tutorialContainer.classList.contains('show') && 
+            !tutorialContainer.contains(event.target) && 
+            event.target !== helpBtn) {
+            tutorialContainer.classList.remove('show');
+        }
+    });
+    
     function showDownloadFeedback() {
-        // Altera temporariamente o botão para mostrar confirmação
         const originalText = downloadBtn.innerHTML;
         downloadBtn.innerHTML = '✅ Download Iniciado!';
         downloadBtn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
         
-        // Restaura o botão após 2 segundos
         setTimeout(() => {
             downloadBtn.innerHTML = originalText;
             downloadBtn.style.background = 'linear-gradient(135deg, #8c52ff, #5ce1e6)';
         }, 2000);
         
-        // Log no console (pode remover em produção)
         console.log('Download solicitado em: ' + new Date().toLocaleString());
     }
     
